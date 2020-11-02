@@ -1,3 +1,6 @@
+/* eslint-disable react/no-access-state-in-setstate */
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable react/no-unused-state */
 import * as React from 'react';
 import Display from './Display';
 import Keypad from './Keypad';
@@ -12,7 +15,6 @@ class Calculate extends React.Component {
   }
 
     onClick = button => {
-      const { res } = this.state;
       if (button === '=') {
         this.calculate();
       } else if (button === 'C') {
@@ -21,16 +23,23 @@ class Calculate extends React.Component {
         this.backspace();
       } else {
         this.setState({
-          result: res + button,
+          result: this.state.result + button,
         });
       }
     };
 
     calculate = () => {
+      let checkResult = '';
+      if (this.state.result.includes('--')) {
+        checkResult = this.state.result.replace('--', '+');
+      } else {
+        checkResult = this.state.result;
+      }
+
       try {
         this.setState({
           // eslint-disable-next-line
-                result: (eval(this.state.result) || "" ) + ""
+                result: (eval(checkResult) || "" ) + ""
         });
       } catch (e) {
         this.setState({
@@ -46,19 +55,16 @@ class Calculate extends React.Component {
     };
 
     backspace = () => {
-      const { res } = this.state;
       this.setState({
-        result: res.slice(0, -1),
+        result: this.state.result.slice(0, -1),
       });
     };
 
     render() {
-      const { res } = this.state;
       return (
         <div>
           <div className="calculator-body">
-            <h1>Simple Calculator</h1>
-            <Display result={res} />
+            <Display result={this.state.result} />
             <Keypad onClick={this.onClick} />
           </div>
         </div>
