@@ -1,5 +1,6 @@
 import * as React from 'react';
 import './App.css';
+import calculate from './components/Calculate';
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
         <p>
           Hello World !!!
         </p>
+        <calculate />
       </header>
     </div>
   );
