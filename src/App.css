@@ -11,11 +11,26 @@
 .result {
     border: 1px solid black;
     max-height: 2rem;
-    
+    width: 17rem;
 }
 
 .inner-result {
     display: flex;
     justify-content: flex-end;
+    padding-right: .5rem;
     
+}
+
+.button {
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid red;
+    margin-top: .2rem;
+    max-width: 17rem;
+}
+
+button {
+    width: 25%;
+    height: 3.75rem;
+    font-size: 1.8rem;
 }

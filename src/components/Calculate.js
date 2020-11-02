@@ -1,5 +1,5 @@
+/* eslint-disable no-eval */
 /* eslint-disable react/no-access-state-in-setstate */
-/* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/no-unused-state */
 import * as React from 'react';
 import Display from './Display';
@@ -15,6 +15,7 @@ class Calculate extends React.Component {
   }
 
     onClick = button => {
+      const { result } = this.state;
       if (button === '=') {
         this.calculate();
       } else if (button === 'C') {
@@ -23,23 +24,23 @@ class Calculate extends React.Component {
         this.backspace();
       } else {
         this.setState({
-          result: this.state.result + button,
+          result: result + button,
         });
       }
     };
 
     calculate = () => {
+      const { result } = this.state;
       let checkResult = '';
-      if (this.state.result.includes('--')) {
-        checkResult = this.state.result.replace('--', '+');
+      if (result.includes('--')) {
+        checkResult = result.replace('--', '+');
       } else {
-        checkResult = this.state.result;
+        checkResult = result;
       }
 
       try {
         this.setState({
-          // eslint-disable-next-line
-                result: (eval(checkResult) || "" ) + ""
+          result: `${eval(checkResult) || ''}`,
         });
       } catch (e) {
         this.setState({
@@ -55,16 +56,18 @@ class Calculate extends React.Component {
     };
 
     backspace = () => {
+      const { result } = this.state;
       this.setState({
-        result: this.state.result.slice(0, -1),
+        result: result.slice(0, -1),
       });
     };
 
     render() {
+      const { result } = this.state;
       return (
         <div>
           <div className="calculator-body">
-            <Display result={this.state.result} />
+            <Display result={result} />
             <Keypad onClick={this.onClick} />
           </div>
         </div>
