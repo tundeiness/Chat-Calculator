@@ -14,14 +14,12 @@ class Calculate extends React.Component {
     };
   }
 
-    onClick = button => {
+    buttonClick = button => {
       const { result } = this.state;
       if (button === '=') {
         this.calculate();
       } else if (button === 'C') {
         this.reset();
-      } else if (button === 'CE') {
-        this.backspace();
       } else {
         this.setState({
           result: result + button,
@@ -55,20 +53,13 @@ class Calculate extends React.Component {
       });
     };
 
-    backspace = () => {
-      const { result } = this.state;
-      this.setState({
-        result: result.slice(0, -1),
-      });
-    };
-
     render() {
       const { result } = this.state;
       return (
         <div>
           <div className="calculator-body">
             <Display result={result} />
-            <Keypad onClick={this.onClick} />
+            <Keypad onClick={this.buttonClick} />
           </div>
         </div>
       );

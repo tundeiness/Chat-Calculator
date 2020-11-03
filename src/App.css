@@ -18,19 +18,78 @@
     display: flex;
     justify-content: flex-end;
     padding-right: .5rem;
-    
 }
 
 .button {
     display: flex;
     flex-wrap: wrap;
-    border: 1px solid red;
+    border: 1px solid transparent;
     margin-top: .2rem;
     max-width: 17rem;
 }
 
-button {
+.bottom-wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+.digits {
+    display: flex;
+    flex-wrap: wrap;
+    width: 75%;
+    /* border: 1px solid red; */
+    
+}
+
+.digits > .numbers {
     width: 25%;
     height: 3.75rem;
-    font-size: 1.8rem;
 }
+
+.digits > .zero {
+    width: 75%;
+}
+
+.side-operators {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+}
+
+.addition,
+.subtraction,
+.times,
+.equals {
+    height: 2.83rem;
+}
+
+
+button {
+    /* width: 25%;
+    height: 3.75rem;*/
+    font-size: 1.2rem;
+    font-weight: bold; 
+}
+
+.operator-wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: 25%;
+}
+
+.operator-wrapper-item-one, 
+.operator-wrapper-item-two,
+.operator-wrapper-item-three,
+.operator-wrapper-item-four {
+    width: 25%;
+    height: 3.75rem;
+}
+
+.bottom-wrapper {
+    /* border: 1px solid green; */
+    /* max-width: 17rem; */
+    width: 100%;
+}
+
