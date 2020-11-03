@@ -1,7 +1,6 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 
-
 const Keypad = props => {
   const { onClick } = props;
   return (
