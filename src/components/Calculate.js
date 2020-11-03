@@ -14,7 +14,7 @@ class Calculate extends React.Component {
     };
   }
 
-    buttonClick = button => {
+    onClick = button => {
       const { result } = this.state;
       if (button === '=') {
         this.calculate();
@@ -59,7 +59,7 @@ class Calculate extends React.Component {
         <div>
           <div className="calculator-body">
             <Display result={result} />
-            <Keypad onClick={this.buttonClick} />
+            <Keypad onClick={this.onClick} />
           </div>
         </div>
       );
