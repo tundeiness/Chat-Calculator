@@ -4,6 +4,7 @@
 import * as React from 'react';
 import Display from './Display';
 import Keypad from './Keypad';
+import Chat from './Chats';
 
 class Calculate extends React.Component {
   constructor() {
@@ -60,6 +61,9 @@ class Calculate extends React.Component {
           <div className="calculator-body">
             <Display result={result} />
             <Keypad onClick={this.onClick} />
+          </div>
+          <div className="result-stream">
+            <Chat />
           </div>
         </div>
       );

@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import * as React from 'react';
 import PropTypes from 'prop-types';
 
@@ -28,7 +29,6 @@ const Keypad = props => {
         </div>
         <div className="side-operators">
           <button className="addition" type="button" name="+" onClick={e => onClick(e.target.name)}>+</button>
-          <button className="subtraction" type="button" name="-" onClick={e => onClick(e.target.name)}>-</button>
           <button className="times" type="button" name="*" onClick={e => onClick(e.target.name)}>x</button>
           <button className="equals" type="button" name="=" onClick={e => onClick(e.target.name)}>=</button>
         </div>
