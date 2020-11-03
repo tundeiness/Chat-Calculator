@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import * as React from 'react';
+import PropTypes from 'prop-types';
 // import Top from './OperatorPanel';
 
 const Keypad = props => {
@@ -36,6 +36,10 @@ const Keypad = props => {
       </div>
     </div>
   );
+};
+
+Keypad.propTypes = {
+  onClick: PropTypes.string.isRequired,
 };
 
 export default Keypad;
