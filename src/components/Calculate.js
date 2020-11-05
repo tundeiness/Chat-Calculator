@@ -4,6 +4,7 @@
 import * as React from 'react';
 import Display from './Display';
 import Keypad from './Keypad';
+// import Chat from './Chat';
 
 class Calculate extends React.Component {
   constructor() {
@@ -11,6 +12,8 @@ class Calculate extends React.Component {
 
     this.state = {
       result: '',
+      input: '',
+      computationHistory: [],
     };
   }
 
@@ -24,6 +27,7 @@ class Calculate extends React.Component {
         this.setState({
           result: result + button,
         });
+        console.log(result);
       }
     };
 
@@ -34,6 +38,13 @@ class Calculate extends React.Component {
         checkResult = result.replace('--', '+');
       } else {
         checkResult = result;
+        // console.log(checkResult);
+        this.setState(state => {
+          const computationHistory = state.computationHistory.concat(checkResult);
+          return {
+            computationHistory,
+          };
+        });
       }
 
       try {
@@ -53,14 +64,25 @@ class Calculate extends React.Component {
       });
     };
 
+    broadcastComputation = () => {
+      const { computationHistory } = this.state;
+      computationHistory.forEach(m => m.emit('message', m));
+    };
+
+    getInput = () => {
+
+    }
+
     render() {
-      const { result } = this.state;
+      const { result, computationHistory } = this.state;
+      console.log(computationHistory);
       return (
         <div>
           <div className="calculator-body">
             <Display result={result} />
-            <Keypad onClick={this.onClick} />
+            <Keypad getInput={this.getInput} onClick={this.onClick} />
           </div>
+          {/* <Chat /> */}
         </div>
       );
     }
